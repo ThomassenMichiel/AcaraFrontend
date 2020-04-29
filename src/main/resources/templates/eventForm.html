@@ -146,6 +146,17 @@
                 </div>
             </div>
 
+            <div class="form-group row">
+                <div class="col-3">
+                    <label class="control-label float-left" for="youtubeUrl"
+                           th:for="${#ids.next('youtubeUrl')}">URL: </label>
+                </div>
+                <div class="col-9">
+                    <input class="form-control-lg w-75" type="text" id="youtubeUrl" placeholder="URL"
+                           th:field="${event.youtubeUrl}"/>
+                </div>
+            </div>
+
 
             <div class="form-group row">
                 <button class="btn btn-dark mx-2 btn-lg" type="submit" value="submit">Confirm</button>

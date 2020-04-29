@@ -16,7 +16,7 @@
 <div th:insert="navbar :: navbar"></div>
 <div class="container-fluid align-content-center">
 
-    <div class="row">
+    <div class="row justify-content-center">
         <div class="col-md-4">
             <div class="container mx-2 my-2" align="center">
                 <p class="sr-only" th:text="'ID: ' + ${event.id}">ID</p>
@@ -33,12 +33,12 @@
 
                 <div class=" my-3 lead form-group row" style="font-size: x-large">
                     <div class="font-weight-bold col-6 w-25 d-inline-block text-right">Event date:</div>
-                    <span class="col-6 text-left"  th:text="${event.eventDate}">event date</span>
+                    <span class="col-6 text-left" th:text="${event.eventDate}">event date</span>
                 </div>
 
                 <div class="my-3 lead form-group row" style="font-size: x-large">
                     <div class="font-weight-bold col-6 w-25 d-inline-block text-right">Price:</div>
-                    <span class="col-6 text-left"  th:text="${event.price}">price</span>
+                    <span class="col-6 text-left" th:text="${event.price}">price</span>
                 </div>
 
                 <div class="my-3 lead form-group row " style="font-size: x-large">
@@ -48,26 +48,32 @@
 
                 <div class="my-3 lead form-group row " style="font-size: x-large">
                     <div class="font-weight-bold col-6 w-25 d-inline-block text-right">Location:</div>
-                    <span class="col-6 text-left"  th:text="${event.location}">location</span>
+                    <span class="col-6 text-left" th:text="${event.location}">location</span>
                 </div>
 
-                <div class="form-group row justify-content-center" >
-                    <div class="col-9 ml-3 my-2" >
-                        <a class="btn btn-dark" href="/events" th:href="@{|/events/${event.id}|}" sec:authorize="hasRole('ADMIN')">Edit</a>
+                <div class="form-group row justify-content-center">
+                    <div class="col-9 ml-3 my-2">
+                        <a class="btn btn-dark" href="/events" th:href="@{|/events/${event.id}|}"
+                           sec:authorize="hasRole('ADMIN')">Edit</a>
                         <span th:insert="deleteEvent :: deleteEvent" sec:authorize="hasRole('ADMIN')"></span>
-                        <a href="/orders/event.id" th:href="@{/orders/(event=${event.id})}" class="btn btn-primary mr-3">Buy Ticket</a>
+                        <a href="/orders/event.id" th:href="@{/orders/(event=${event.id})}"
+                           class="btn btn-primary mr-3">Buy Ticket</a>
                     </div>
                 </div>
 
             </div>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-4 justify-content-center">
             <img class="img-small mt-3 px-2 py-2" th:src="@{'data:image/png;base64,'+${eventImage}}"/>
         </div>
 
+
+    </div>
+
+    <div class="row justify-content-center">
         <div class="col-md-4">
-           <iframe class="my-3" width="560" height="315" th:src="${event.youtubeUrl}"></iframe>
+            <iframe class="my-3" width="700" height="393,75" th:src="${event.youtubeUrl}"></iframe>
         </div>
     </div>
 </div>
