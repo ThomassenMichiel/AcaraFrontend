@@ -62,7 +62,7 @@ public class EventController {
     @GetMapping
     public String findAllEvents(Model model,
                                 @RequestParam(name = "page", defaultValue = "1", required = false) int page,
-                                @RequestParam(name = "size", defaultValue = "20", required = false) int size,
+                                @RequestParam(name = "size", defaultValue = "10", required = false) int size,
                                 @RequestParam(name = "sort", defaultValue = "eventDate", required = false) String sort,
                                 @RequestParam Map<String, String> params) {
         params.entrySet().removeIf(e -> e.getValue().isEmpty()); //remove empty values from the set to avoid errors when parsing dates or bigDecimals
