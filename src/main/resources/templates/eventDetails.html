@@ -108,7 +108,7 @@
             </div>
             <div th:if="${event.youtubeId != null && event.youtubeId != ''}"
                  class="row mt-3" style="max-height: 30vh">
-                <iframe th:src="${'https://www.youtube.com/embed/'+event.youtubeId}"></iframe>
+                <iframe th:src="${'https://www.youtube.com/embed/'+ event.youtubeId.replace('https://www.youtube.com/watch?v=', '')}"></iframe>
             </div>
         </div>
     </div>
