@@ -126,7 +126,8 @@ public class EventController {
                                       @RequestParam(ATTRIBUTE_EVENT_IMAGE) MultipartFile eventImage,
                                       Model model) throws IOException {
         EventDto eventDtoFromDb = eventService.getEvent(event.getId());
-        EventModel eventFromDb = mapper.eventDtoToEventModel(eventDtoFromDb);
+        event.setAmountOfLikes(eventDtoFromDb.getAmountOfLikes());
+        event.setLiked(eventDtoFromDb.isLiked());
         if (br.hasErrors()) {
             addCategories(model);
             model.addAttribute(ATTRIBUTE_EVENT, event);
@@ -134,7 +135,7 @@ public class EventController {
             return EDIT_EVENT_LOCATION;
         }
         event.setImage(eventImage.getBytes());
-        eventService.editEvent(eventFromDb.getId(), mapper.eventModelToEventDto(event));
+        eventService.editEvent(eventDtoFromDb.getId(), mapper.eventModelToEventDto(event));
         return REDIRECT_EVENTS;
     }
     
