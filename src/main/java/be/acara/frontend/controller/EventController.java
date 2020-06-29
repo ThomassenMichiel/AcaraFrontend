@@ -111,6 +111,9 @@ public class EventController {
     @GetMapping("/{id}")
     public String displayEditEventForm(@PathVariable(ATTRIBUTE_ID) Long id, Model model) {
         EventModel event = mapper.eventDtoToEventModel(eventService.getEvent(id));
+        if(!event.getYoutubeId().contains("https://www.youtube.com/watch?v=")) {
+            event.setYoutubeId("https://www.youtube.com/watch?v=" + event.getYoutubeId());
+        }
         model.addAttribute(ATTRIBUTE_EVENT, event);
         model.addAttribute(ATTRIBUTE_EVENT_IMAGE, ImageUtil.convertToBase64(event.getImage()));
         addCategories(model);
